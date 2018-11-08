@@ -1,0 +1,40 @@
+d3.select("svg")
+.append("circle")
+.attr("cx", 11)
+.attr("cy", 19)
+.attr("r", 70)
+.attr("fill", 'green');
+
+
+var svg = d3.select("svg");
+
+svg.append("g")
+    .attr("class", "bubble")
+  .selectAll("circle")
+    .data(potholeData)
+  .enter().append("circle")
+    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    .attr("r", 1.5);
+
+
+var svg = d3.select("svg");
+
+svg.append("g")
+    .attr("class", "bubble")
+  .selectAll("circle")
+    .data(potholeData)
+  .enter().append("circle")
+    .attr("r", 1.5);
+
+
+d3.selectAll("svg path")
+  .each(function (d, i) {
+     var centroid = path.centroid(d);
+     console.log('Centroid at: ' + centroid[0] + ', ' + centroid[1]);
+  });
+
+  d3.selectAll("svg path")
+    .each(function (d) {
+       console.log(d);
+    });
+
